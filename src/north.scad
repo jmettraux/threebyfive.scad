@@ -2,5 +2,5 @@
 //
 // src/north.scad
 
-use <dimensions.scad>;
+include <threebyfive.scad>;
 

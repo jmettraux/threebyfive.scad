@@ -1,6 +1,6 @@
 
 //
-// src/dimensions.scad
+// src/threebyfive.scad
 
 // unit is mm
 
