@@ -38,3 +38,23 @@ module outer_box() {
   }
 }
 
+module index_card() {
+
+  cube([ card_width, card_length, 0.2 ], center=true);
+}
+
+module card_space(height, w=card_width + o4, l=card_length + o4) {
+
+  cube([ w, l, height ], center=true);
+}
+
+//translate([ 0, 0, height ]) color("ivory") index_card();
+//translate([ 0, 0, height + 1 ]) color("ivory") index_card();
+//translate([ 0, 0, height + 2 ]) color("ivory") index_card();
+//translate([ 0, 0, height + 3 ]) color("ivory") index_card();
+
+difference() {
+  outer_box();
+  #translate([ 10, 0, 0 ]) card_space(height - o2 * 8);
+}
+
