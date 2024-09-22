@@ -24,42 +24,39 @@ wall_width = 0.6;
 inner_box_width = card_width + o2;
 inner_box_length = card_length + o2;
 inner_box_height = height - wall_width * 2 - 14 * o2;
-echo("inner_box_height", inner_box_height);
+  //echo("inner_box_height", inner_box_height);
+
+dx = 35;
 
 
 module outer_box() {
 
-  difference() {
+  translate([ -dx, 0, 0 ]) {
 
-    hull() {
+    difference() {
 
-      translate([ -cw / 2,   cl / 2, 0 ]) sphere(d=height);
-      translate([  cw / 2,   cl / 2, 0 ]) sphere(d=height);
-      translate([ -cw / 2, - cl / 2, 0 ]) sphere(d=height);
-      translate([  cw / 2, - cl / 2, 0 ]) sphere(d=height);
+      hull() {
+
+        translate([ -cw / 2,   cl / 2, 0 ]) sphere(d=height);
+        translate([  cw / 2,   cl / 2, 0 ]) sphere(d=height);
+        translate([ -cw / 2, - cl / 2, 0 ]) sphere(d=height);
+        translate([  cw / 2, - cl / 2, 0 ]) sphere(d=height);
+      }
+
+      translate([ cw / 2 + cyld / 2, 0,  ]) rotate([ 90, 0, 0 ])
+        cylinder(d=cyld, h=cl * 1.4, center=true);
     }
-
-    translate([ cw / 2 + cyld / 2, 0,  ]) rotate([ 90, 0, 0 ])
-      cylinder(d=cyld, h=cl * 1.4, center=true);
   }
 }
 
-module index_card() {
-
-  cube([ card_width, card_length, 0.2 ], center=true);
-}
-
-module card_space(height, w=card_width + o2, l=card_length + o2) {
-  cube([ w, l, height ], center=true);
-}
-
+//module index_card() {
+//  cube([ card_width, card_length, 0.2 ], center=true);
+//}
+  //
 //translate([ 0, 0, height ]) color("ivory") index_card();
 //translate([ 0, 0, height + 1 ]) color("ivory") index_card();
 //translate([ 0, 0, height + 2 ]) color("ivory") index_card();
 //translate([ 0, 0, height + 3 ]) color("ivory") index_card();
 
-//difference() {
-//  outer_box();
-//  #translate([ 10, 0, 0 ]) card_space(height - o2 * 8);
-//}
+//outer_box();
 
