@@ -20,7 +20,7 @@ cw = card_width + height / 2 + o4;
 
 $fn = 60;
 
-wall_width = 0.6;
+wall_width = 0.8;
 inner_box_width = card_width + o2;
 inner_box_length = card_length + o2;
 inner_box_height = height - wall_width * 2 - 14 * o2;
