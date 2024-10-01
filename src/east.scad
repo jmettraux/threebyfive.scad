@@ -17,34 +17,21 @@ difference() {
 
 difference() {
 
-  w = inner_box_width + 2 * ww;
+  w = card_width;
   l = inner_box_length;
-  h = inner_box_height - 2 * o2;
+  h = inner_box_height;
 
   translate([ -0.5 * w, 0, 0 ])
     cube([
       w,
-      l,
+      l + 1.4,
       h
         ], center=true);
-  translate([ -0.5 * inner_box_width - 1 * ww, 0, ww ])
+  translate([ -0.5 * inner_box_width, 0, ww ])
     cube([
       w + ww,
       l - 2 * ww,
       h - ww
         ], center=true);
-
-  //translate([ -0.5 * w, 0, 0 ])
-  //  cube([
-  //    w,
-  //    inner_box_length + 2 * ww,
-  //    inner_box_height + 2 * ww
-  //      ], center=true);
-  //translate([ -0.5 * inner_box_width - 1 * ww, 0, ww ])
-  //  cube([
-  //    w + ww,
-  //    inner_box_length,
-  //    inner_box_height + 3 * ww,
-  //      ], center=true);
 }
 

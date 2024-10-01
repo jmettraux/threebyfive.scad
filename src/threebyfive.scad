@@ -23,7 +23,7 @@ $fn = 60;
 wall_width = 0.8;
 inner_box_width = card_width + o2;
 inner_box_length = card_length + o2;
-inner_box_height = height - wall_width * 2 - 14 * o2;
+inner_box_height = height - wall_width * 2 - 11 * o2;
   //echo("inner_box_height", inner_box_height);
 
 dx = 35;
