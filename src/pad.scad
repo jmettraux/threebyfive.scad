@@ -12,49 +12,55 @@ $fn = 90;
 o2 = 0.2;
 inch = 25.4;
 ball_radius = 1;
+small_ball_radius = 5;
 clip_width = 37;
 clip_depth = 3;
 clip_length = 60;
 
 br = ball_radius;
+sbr = small_ball_radius;
 bd = ball_radius * 2;
 cw = clip_width;
 cd = clip_depth;
 cl = clip_length;
 
 
-length = 5 * inch + bd + o2;
 width = 3 * inch + bd + o2;
+length = 5 * inch + bd + o2;
 height = 9;
 
+w2 = 0.5 * width;
+l2 = 0.5 * length;
+
 module ball() { sphere(r=br); }
+module sball() { sphere(r=sbr); }
 
 
 // plate
 
 hull() {
-  translate([ - 0.5 * length, - 0.5 * width, 0 ]) ball();
-  translate([ - 0.5 * length, + 0.5 * width, 0 ]) ball();
-  translate([ + 0.5 * length, - 0.5 * width, 0 ]) ball();
-  translate([ + 0.5 * length, + 0.5 * width, 0 ]) ball();
+  translate([ - l2, - w2, 0 ]) ball();
+  translate([ - l2, + w2, 0 ]) ball();
+  translate([ + l2, - w2, 0 ]) ball();
+  translate([ + l2, + w2, 0 ]) ball();
 }
 
 // left side
 
 hull() {
-  translate([ - 0.5 * length, - 0.5 * width, 0 ]) ball();
-  translate([ - 0.5 * length, + 0.5 * width, 0 ]) ball();
-  translate([ - 0.5 * length, - 0.5 * width, height ]) ball();
-  translate([ - 0.5 * length, + 0.5 * width, height ]) ball();
+  translate([ - l2, - w2, 0 ]) ball();
+  translate([ - l2, + w2, 0 ]) ball();
+  translate([ - l2, - w2, height ]) ball();
+  translate([ - l2, + w2, height ]) ball();
 }
 
 // top side
 
 hull() {
-  translate([ - 0.5 * length, + 0.5 * width, 0 ]) ball();
-  translate([ + 0.5 * length - cw, + 0.5 * width, 0 ]) ball();
-  translate([ - 0.5 * length, + 0.5 * width, height ]) ball();
-  translate([ + 0.5 * length - cw, + 0.5 * width, height ]) ball();
+  translate([ - l2, + w2, 0 ]) ball();
+  translate([ + l2 - cw, + w2, 0 ]) ball();
+  translate([ - l2, + w2, height ]) ball();
+  translate([ + l2 - cw, + w2, height ]) ball();
 }
 
 // bottom big part
@@ -62,35 +68,35 @@ hull() {
 d = cd - br;
 
 hull() {
-  translate([ - 0.5 * length, - 0.5 * width, 0 ]) ball();
-  translate([ - 0.5 * length, + 0.5 * width, 0 ]) ball();
-  translate([ + 0.5 * length - cw, - 0.5 * width, 0 ]) ball();
-  translate([ + 0.5 * length - cw, + 0.5 * width, 0 ]) ball();
-  translate([ - 0.5 * length, - 0.5 * width, -d ]) ball();
-  translate([ - 0.5 * length, + 0.5 * width, -d ]) ball();
-  translate([ + 0.5 * length - cw, - 0.5 * width, -d ]) ball();
-  translate([ + 0.5 * length - cw, + 0.5 * width, -d ]) ball();
+  translate([ - l2, - w2, 0 ]) ball();
+  translate([ - l2, + w2, 0 ]) ball();
+  translate([ + l2 - cw, - w2, 0 ]) ball();
+  translate([ + l2 - cw, + w2, 0 ]) ball();
+  translate([ - l2, - w2, -d ]) ball();
+  translate([ - l2, + w2, -d ]) ball();
+  translate([ + l2 - cw, - w2, -d ]) ball();
+  translate([ + l2 - cw, + w2, -d ]) ball();
 }
 
 // bottom small part
 
 hull() {
-  translate([ - 0.5 * length, - 0.5 * width, 0 ]) ball();
-  translate([ - 0.5 * length, + 0.5 * width - cl - br, 0 ]) ball();
-  translate([ + 0.5 * length, - 0.5 * width, 0 ]) ball();
-  translate([ + 0.5 * length, + 0.5 * width - cl - br, 0 ]) ball();
-  translate([ - 0.5 * length, - 0.5 * width, -d ]) ball();
-  translate([ - 0.5 * length, + 0.5 * width - cl - br, -d ]) ball();
-  translate([ + 0.5 * length, - 0.5 * width, -d ]) ball();
-  translate([ + 0.5 * length, + 0.5 * width - cl - br, -d ]) ball();
+  translate([ - l2, - w2, 0 ]) ball();
+  translate([ - l2, + w2 - cl - br, 0 ]) ball();
+  translate([ + l2, - w2, 0 ]) ball();
+  translate([ + l2, + w2 - cl - br, 0 ]) ball();
+  translate([ - l2, - w2, -d ]) ball();
+  translate([ - l2, + w2 - cl - br, -d ]) ball();
+  translate([ + l2, - w2, -d ]) ball();
+  translate([ + l2, + w2 - cl - br, -d ]) ball();
 }
 
 // bottom right side
 
 hull() {
-  translate([ + 0.5 * length, - 0.5 * width, 0 ]) ball();
-  translate([ + 0.5 * length, + 0.5 * width, 0 ]) ball();
-  translate([ + 0.5 * length, - 0.5 * width, -d ]) ball();
-  translate([ + 0.5 * length, + 0.5 * width, -d ]) ball();
+  translate([ + l2, - w2, 0 ]) ball();
+  translate([ + l2, + w2, 0 ]) ball();
+  translate([ + l2, - w2, -d ]) ball();
+  translate([ + l2, + w2, -d ]) ball();
 }
 
