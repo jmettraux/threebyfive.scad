@@ -16,6 +16,9 @@ small_ball_radius = 0.7;
 clip_width = 37;
 clip_depth = 3;
 clip_length = 60;
+elastic_width = 3.5 + 0.1;
+elastic_height = 2.4 + 0.1;
+rail_height = elastic_height + 4 * o2;
 
 br = ball_radius;
 sbr = small_ball_radius;
@@ -117,4 +120,27 @@ hull() {
   translate([ + l2, - w2, -d ]) ball();
   translate([ + l2, + w2, -d ]) ball();
 }
+
+module rail() {
+  ew = elastic_width + 7.2 * o2;
+  eh = elastic_height + br;
+  rh = rail_height;
+  l = length - cw;
+  translate([ - 0.5 * l, 0, 0 ])
+    difference() {
+      union() {
+        hull() {
+          translate([ 0, 0, 0 ]) ball();
+          translate([ l, 0, 0 ]) ball();
+          translate([ 0, rh, 0 ]) ball();
+          translate([ l, rh, 0 ]) ball();
+        }
+      }
+      for (i = [ 1 : 1.5 : 18 ]) {
+        translate([ i * ew, 2.1 * o2, 0 ]) cylinder(d=ew, h=2 * br, center=true);
+      }
+    }
+}
+translate([ - 0.5 * cw, w2 + br - 5 * o2, height - 0 * o2 ]) rail();
+translate([ - 0.5 * cw, w2 + br - 5 * o2, -d + 0 * o2 ]) rail();
 
