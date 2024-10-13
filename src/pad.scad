@@ -121,6 +121,29 @@ hull() {
   translate([ + l2, + w2, -d ]) ball();
 }
 
+// tube
+
+//difference() {
+//  hull() {
+//    translate([ + l2, - w2, 0 ]) ball();
+//    translate([ + l2, + w2, 0 ]) ball();
+//    translate([ + l2, - w2, -d ]) ball();
+//    translate([ + l2, + w2, -d ]) ball();
+//    translate([ l2, 0, 0 ])
+//      rotate([ 90, 0, 0 ])
+//        difference() {
+//          cylinder(r=d, h=width - 2 * br, center=true);
+//          translate([ -d, 0, 0 ])
+//            cube([ 2 * d, 3 * d, 1.1 * width ], center=true);
+//        }
+//  }
+//  translate([ l2 + 0.25 * d, 0, 0 ])
+//    rotate([ 90, 0, 0 ])
+//      cylinder(r=0.5 * d, h= 1.1 * width, center=true);
+//}
+
+// rails
+
 module rail() {
   ew = elastic_width + 7.2 * o2;
   eh = elastic_height + br;
