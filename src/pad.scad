@@ -12,7 +12,7 @@ $fn = 90;
 o2 = 0.2;
 inch = 25.4;
 ball_radius = 1;
-small_ball_radius = 5;
+small_ball_radius = 0.7;
 clip_width = 37;
 clip_depth = 3;
 clip_length = 60;
@@ -63,9 +63,27 @@ hull() {
   translate([ + l2 - cw, + w2, height ]) ball();
 }
 
+// top under clip
+
+hull() {
+  translate([ + l2 - cw, + w2 - br + sbr, 0 ]) sball();
+  translate([ + l2 - cw, + w2 - br + sbr, 0.77 * height ]) sball();
+  translate([ + l2, + w2 - br + sbr, 0 ]) sball();
+  translate([ + l2, + w2 - br + sbr, 0.77 * height ]) sball();
+}
+
+// right side
+
+hull() {
+  translate([ + l2, - w2 + 1 * cw, 0 ]) ball();
+  translate([ + l2, + w2, 0 ]) ball();
+  translate([ + l2, - w2 + 1.2 * cw, height ]) ball();
+  translate([ + l2, + w2, height ]) ball();
+}
+
 // bottom big part
 
-d = cd - br;
+d = cd - br + 2.5;
 
 hull() {
   translate([ - l2, - w2, 0 ]) ball();
