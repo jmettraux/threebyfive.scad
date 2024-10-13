@@ -19,6 +19,7 @@ clip_length = 60;
 elastic_width = 3.5 + 0.1;
 elastic_height = 2.4 + 0.1;
 rail_height = elastic_height + 4 * o2;
+para_diameter = 3.0;
 
 br = ball_radius;
 sbr = small_ball_radius;
@@ -105,42 +106,31 @@ hull() {
   translate([ - l2, - w2, 0 ]) ball();
   translate([ - l2, + w2 - cl - br, 0 ]) ball();
   translate([ + l2, - w2, 0 ]) ball();
-  translate([ + l2, + w2 - cl - br, 0 ]) ball();
+  translate([ + l2 - 0.25 * cw, + w2 - cl - br, 0 ]) ball();
   translate([ - l2, - w2, -d ]) ball();
   translate([ - l2, + w2 - cl - br, -d ]) ball();
   translate([ + l2, - w2, -d ]) ball();
-  translate([ + l2, + w2 - cl - br, -d ]) ball();
+  translate([ + l2 - 0.25 * cw, + w2 - cl - br, -d ]) ball();
 }
 
 // bottom right side
 
-hull() {
-  translate([ + l2, - w2, 0 ]) ball();
-  translate([ + l2, + w2, 0 ]) ball();
-  translate([ + l2, - w2, -d ]) ball();
-  translate([ + l2, + w2, -d ]) ball();
+difference() {
+
+  hull() {
+    translate([ + l2, - w2, 0 ]) ball();
+    translate([ + l2, + w2, 0 ]) ball();
+    translate([ + l2, - w2, -d ]) ball();
+    translate([ + l2, + w2, -d ]) ball();
+  }
+
+  translate([ l2, + 0.75 * w2, - 0.6 * d ])
+    rotate([ 0, 90, 0 ])
+      cylinder(d=para_diameter, h = 7 * br, center=true);
+  translate([ l2, - 0.75 * w2, - 0.6 * d ])
+    rotate([ 0, 90, 0 ])
+      cylinder(d=para_diameter, h = 7 * br, center=true);
 }
-
-// tube
-
-//difference() {
-//  hull() {
-//    translate([ + l2, - w2, 0 ]) ball();
-//    translate([ + l2, + w2, 0 ]) ball();
-//    translate([ + l2, - w2, -d ]) ball();
-//    translate([ + l2, + w2, -d ]) ball();
-//    translate([ l2, 0, 0 ])
-//      rotate([ 90, 0, 0 ])
-//        difference() {
-//          cylinder(r=d, h=width - 2 * br, center=true);
-//          translate([ -d, 0, 0 ])
-//            cube([ 2 * d, 3 * d, 1.1 * width ], center=true);
-//        }
-//  }
-//  translate([ l2 + 0.25 * d, 0, 0 ])
-//    rotate([ 90, 0, 0 ])
-//      cylinder(r=0.5 * d, h= 1.1 * width, center=true);
-//}
 
 // rails
 
