@@ -18,9 +18,10 @@ clip_depth = 3;
 clip_length = 60;
 elastic_width = 3.5 + 0.1;
 elastic_height = 2.4 + 0.1;
-rail_height = elastic_height + 4 * o2;
+//rail_height = elastic_height + 4 * o2;
 para_diameter = 4.9;
 para_trench = 20;
+groove_depth = elastic_height + 4 * o2;
 
 br = ball_radius;
 sbr = small_ball_radius;
@@ -155,14 +156,25 @@ hull() {
 
 // groove
 
-//translate([ -0.5 * l2, 1.5 * br + w2 + 0.5 * d, 0 ]) difference() {
-//  l = 2 * l2 - cw;
-//  dd = d + height;
-//  cube([ l, 0.5 * dd, dd ], center=true);
-//  translate([ 0, 0.35 * dd, 0 ])
-//    rotate([ 0, 90, 0 ])
-//      cylinder(d = 1.10 * dd, h = 1.1 * l, center=true);
-//}
+gd = groove_depth;
+gz = 0.75 * gd;
+
+hull() {
+  translate([ - l2, + w2, -d ]) ball();
+  translate([ + l2 - cw, + w2, -d ]) ball();
+  translate([ - l2, + w2 + gd, -d ]) ball();
+  translate([ + l2 - cw, + w2 + gd, -d ]) ball();
+  translate([ - l2, + w2, - d + gz ]) ball();
+  translate([ + l2 - cw, + w2, - d + gz ]) ball();
+}
+hull() {
+  translate([ - l2, + w2, height ]) ball();
+  translate([ + l2 - cw, + w2, height ]) ball();
+  translate([ - l2, + w2 + gd, height ]) ball();
+  translate([ + l2 - cw, + w2 + gd, height ]) ball();
+  translate([ - l2, + w2, height - gz ]) ball();
+  translate([ + l2 - cw, + w2, height - gz ]) ball();
+}
 
 // rails
 
