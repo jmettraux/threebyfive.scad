@@ -178,6 +178,7 @@ hull() {
   translate([ - l2, - w2, 0 ]) ball();
   translate([ - l2, - w2, -d ]) ball();
   translate([ - l2 + para_diameter, - w2, 0 ]) ball();
+  translate([ - l2, - w2, height ]) ball();
 }
 
 // groove
