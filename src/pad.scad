@@ -22,6 +22,8 @@ elastic_height = 2.4 + 0.1;
 para_diameter = 4.9;
 para_trench = 20;
 groove_depth = elastic_height + 4 * o2;
+ridge_depth = 6.6;
+ridge_height = 2;
 
 br = ball_radius;
 sbr = small_ball_radius;
@@ -66,6 +68,10 @@ difference() {
   }
   elastic_holes();
 }
+translate([ 0, + w2 - ridge_depth, -br ]) rotate([ 0, 90, 0 ])
+  cylinder(d=ridge_height, h=length, center=true);
+translate([ 0, - w2 + ridge_depth, -br ]) rotate([ 0, 90, 0 ])
+  cylinder(d=ridge_height, h=length, center=true);
 
 // left side
 
