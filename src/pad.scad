@@ -153,29 +153,39 @@ hull() {
   translate([ + l2, + w2, -d ]) ball();
 }
 
+// groove
+
+//translate([ -0.5 * l2, 1.5 * br + w2 + 0.5 * d, 0 ]) difference() {
+//  l = 2 * l2 - cw;
+//  dd = d + height;
+//  cube([ l, 0.5 * dd, dd ], center=true);
+//  translate([ 0, 0.35 * dd, 0 ])
+//    rotate([ 0, 90, 0 ])
+//      cylinder(d = 1.10 * dd, h = 1.1 * l, center=true);
+//}
 
 // rails
 
-module rail() {
-  ew = elastic_width + 7.2 * o2;
-  eh = elastic_height + br;
-  rh = rail_height;
-  l = length - cw;
-  translate([ - 0.5 * l, 0, 0 ])
-    difference() {
-      union() {
-        hull() {
-          translate([ 0, 0, 0 ]) ball();
-          translate([ l, 0, 0 ]) ball();
-          translate([ 0, rh, 0 ]) ball();
-          translate([ l, rh, 0 ]) ball();
-        }
-      }
-      for (i = [ 1 : 1.5 : 18 ]) {
-        translate([ i * ew, 2.1 * o2, 0 ]) cylinder(d=ew, h=2 * br, center=true);
-      }
-    }
-}
-translate([ - 0.5 * cw, w2 + br - 5 * o2, height - 0 * o2 ]) rail();
-translate([ - 0.5 * cw, w2 + br - 5 * o2, -d + 0 * o2 ]) rail();
+//module rail() {
+//  ew = elastic_width + 7.2 * o2;
+//  eh = elastic_height + br;
+//  rh = rail_height;
+//  l = length - cw;
+//  translate([ - 0.5 * l, 0, 0 ])
+//    difference() {
+//      union() {
+//        hull() {
+//          translate([ 0, 0, 0 ]) ball();
+//          translate([ l, 0, 0 ]) ball();
+//          translate([ 0, rh, 0 ]) ball();
+//          translate([ l, rh, 0 ]) ball();
+//        }
+//      }
+//      for (i = [ 1 : 1.5 : 18 ]) {
+//        translate([ i * ew, 2.1 * o2, 0 ]) cylinder(d=ew, h=2 * br, center=true);
+//      }
+//    }
+//}
+//translate([ - 0.5 * cw, w2 + br - 5 * o2, height - 0 * o2 ]) rail();
+//translate([ - 0.5 * cw, w2 + br - 5 * o2, -d + 0 * o2 ]) rail();
 
