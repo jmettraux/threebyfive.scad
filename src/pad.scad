@@ -80,16 +80,16 @@ hull() {
 
 hull() {
   translate([ - l2, + w2, 0 ]) ball();
-  translate([ + l2 - cw, + w2, 0 ]) ball();
+  translate([ + l2 - pt, + w2, 0 ]) ball();
   translate([ - l2, + w2, height ]) ball();
-  translate([ + l2 - cw, + w2, height ]) ball();
+  translate([ + l2 - pt, + w2, height ]) ball();
 }
 
 // top under clip
 
 hull() {
-  translate([ + l2 - cw, + w2 - br + sbr, 0 ]) sball();
-  translate([ + l2 - cw, + w2 - br + sbr, 0.77 * height ]) sball();
+  translate([ + l2 - pt, + w2 - br + sbr, 0 ]) sball();
+  translate([ + l2 - pt, + w2 - br + sbr, 0.77 * height ]) sball();
   translate([ + l2, + w2 - br + sbr, 0 ]) sball();
   translate([ + l2, + w2 - br + sbr, 0.77 * height ]) sball();
 }
@@ -112,27 +112,14 @@ difference() {
   hull() {
     translate([ - l2 + pt, - w2, 0 ]) ball();
     translate([ - l2 + pt, + w2, 0 ]) ball();
-    translate([ + l2 - cw, - w2, 0 ]) ball();
-    translate([ + l2 - cw, + w2, 0 ]) ball();
+    translate([ + l2 - pt, - w2, 0 ]) ball();
+    translate([ + l2 - pt, + w2, 0 ]) ball();
     translate([ - l2 + pt, - w2, -d ]) ball();
     translate([ - l2 + pt, + w2, -d ]) ball();
-    translate([ + l2 - cw, - w2, -d ]) ball();
-    translate([ + l2 - cw, + w2, -d ]) ball();
+    translate([ + l2 - pt, - w2, -d ]) ball();
+    translate([ + l2 - pt, + w2, -d ]) ball();
   }
   elastic_holes();
-}
-
-// bottom small part
-
-hull() {
-  translate([ - l2 + pt, - w2, 0 ]) ball();
-  translate([ - l2 + pt, + w2 - cl - br, 0 ]) ball();
-  translate([ + l2, - w2, 0 ]) ball();
-  translate([ + l2, + w2 - cl - br, 0 ]) ball();
-  translate([ - l2 + pt, - w2, -d ]) ball();
-  translate([ - l2 + pt, + w2 - cl - br, -d ]) ball();
-  translate([ + l2, - w2, -d ]) ball();
-  translate([ + l2, + w2 - cl - br, -d ]) ball();
 }
 
 // bottom left sides
@@ -151,12 +138,6 @@ difference() {
     rotate([ 0, 90, 0 ])
       cylinder(d=para_diameter, h = 7 * br, center=true);
 }
-//hull() {
-//  translate([ - l2, - w2, 0 ]) ball();
-//  translate([ - l2, - w2, -d ]) ball();
-//  translate([ 0, - w2, 0 ]) ball();
-//  translate([ 0, - w2, -d ]) ball();
-//}
 hull() {
   translate([ - l2, + w2, 0 ]) ball();
   translate([ - l2, + w2, -d ]) ball();
@@ -166,11 +147,19 @@ hull() {
 
 // bottom right side
 
-hull() {
-  translate([ + l2, - w2, 0 ]) ball();
-  translate([ + l2, + w2, 0 ]) ball();
-  translate([ + l2, - w2, -d ]) ball();
-  translate([ + l2, + w2, -d ]) ball();
+difference() {
+  hull() {
+    translate([ + l2, - w2, 0 ]) ball();
+    translate([ + l2, + w2, 0 ]) ball();
+    translate([ + l2, - w2, -d ]) ball();
+    translate([ + l2, + w2, -d ]) ball();
+  }
+  translate([ + l2, + 0.75 * w2, - 0.45 * d ])
+    rotate([ 0, 90, 0 ])
+      cylinder(d=para_diameter, h = 7 * br, center=true);
+  translate([ + l2, - 0.75 * w2, - 0.45 * d ])
+    rotate([ 0, 90, 0 ])
+      cylinder(d=para_diameter, h = 7 * br, center=true);
 }
 
 // groove
@@ -180,18 +169,18 @@ gz = 0.75 * gd;
 
 hull() {
   translate([ - l2, + w2, -d ]) ball();
-  translate([ + l2 - cw, + w2, -d ]) ball();
+  translate([ + l2 - pt, + w2, -d ]) ball();
   translate([ - l2, + w2 + gd, -d ]) ball();
-  translate([ + l2 - cw, + w2 + gd, -d ]) ball();
+  translate([ + l2 - pt, + w2 + gd, -d ]) ball();
   translate([ - l2, + w2, - d + gz ]) ball();
-  translate([ + l2 - cw, + w2, - d + gz ]) ball();
+  translate([ + l2 - pt, + w2, - d + gz ]) ball();
 }
 hull() {
   translate([ - l2, + w2, height ]) ball();
-  translate([ + l2 - cw, + w2, height ]) ball();
+  translate([ + l2 - pt, + w2, height ]) ball();
   translate([ - l2, + w2 + gd, height ]) ball();
-  translate([ + l2 - cw, + w2 + gd, height ]) ball();
+  translate([ + l2 - pt, + w2 + gd, height ]) ball();
   translate([ - l2, + w2, height - gz ]) ball();
-  translate([ + l2 - cw, + w2, height - gz ]) ball();
+  translate([ + l2 - pt, + w2, height - gz ]) ball();
 }
 
