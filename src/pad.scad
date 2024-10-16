@@ -162,6 +162,18 @@ difference() {
       cylinder(d=para_diameter, h = 7 * br, center=true);
 }
 
+hull() {
+  translate([ + l2, - w2, 0 ]) ball();
+  translate([ + l2, - w2, -d ]) ball();
+  translate([ + l2 - para_diameter, - w2, 0 ]) ball();
+}
+hull() {
+  translate([ + l2, + w2, 0 ]) ball();
+  translate([ + l2, + w2, -d ]) ball();
+  translate([ + l2 - 0.7 * para_diameter, + w2, 0 ]) ball();
+  translate([ + l2, + w2, height ]) ball();
+}
+
 // groove
 
 gd = groove_depth;
