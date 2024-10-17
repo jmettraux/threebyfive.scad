@@ -34,7 +34,7 @@ cl = clip_length;
 
 
 width = 3 * inch + bd + o2;
-length = 5 * inch + bd + o2;
+length = 5 * inch + br + o2;
 height = 9;
 
 w2 = 0.5 * width;
