@@ -118,14 +118,75 @@ difference() {
   hull() {
     translate([ - l2 + pt, - w2, 0 ]) ball();
     translate([ - l2 + pt, + w2, 0 ]) ball();
-    translate([ + l2 - pt, - w2, 0 ]) ball();
-    translate([ + l2 - pt, + w2, 0 ]) ball();
     translate([ - l2 + pt, - w2, -d ]) ball();
     translate([ - l2 + pt, + w2, -d ]) ball();
+  }
+  translate([ -l2 + pt, + 0.75 * w2, - 0.45 * d ])
+    rotate([ 0, 90, 0 ])
+      cylinder(d=para_diameter, h = 7 * br, center=true);
+  translate([ -l2 + pt, - 0.75 * w2, - 0.45 * d ])
+    rotate([ 0, 90, 0 ])
+      cylinder(d=para_diameter, h = 7 * br, center=true);
+}
+hull() {
+  translate([ - l2 + pt, - w2, 0 ]) ball();
+  translate([ - l2 + pt, - w2, -d ]) ball();
+  translate([ - l2 + pt + para_diameter, - w2, 0 ]) ball();
+}
+
+difference() {
+  hull() {
+    translate([ + l2 - pt, - w2, 0 ]) ball();
+    translate([ + l2 - pt, + w2, 0 ]) ball();
     translate([ + l2 - pt, - w2, -d ]) ball();
     translate([ + l2 - pt, + w2, -d ]) ball();
   }
-  elastic_holes();
+  translate([ + l2 - pt, + 0.75 * w2, - 0.45 * d ])
+    rotate([ 0, 90, 0 ])
+      cylinder(d=para_diameter, h = 7 * br, center=true);
+  translate([ + l2 - pt, - 0.75 * w2, - 0.45 * d ])
+    rotate([ 0, 90, 0 ])
+      cylinder(d=para_diameter, h = 7 * br, center=true);
+}
+hull() {
+  translate([ + l2 - pt, - w2, 0 ]) ball();
+  translate([ + l2 - pt, - w2, -d ]) ball();
+  translate([ + l2 - pt - para_diameter, - w2, 0 ]) ball();
+}
+
+hull() { // central arrow 1
+  translate([ + l2 - pt, 0, 0 ]) ball();
+  translate([ + l2 - pt, 0, -d ]) ball();
+  translate([ + l2 - pt - para_diameter, 0, 0 ]) ball();
+  translate([ + l2 - pt + para_diameter, 0, 0 ]) ball();
+}
+hull() { // central arrow 2
+  translate([ - l2 + pt, 0, 0 ]) ball();
+  translate([ - l2 + pt, 0, -d ]) ball();
+  translate([ - l2 + pt - para_diameter, 0, 0 ]) ball();
+  translate([ - l2 + pt + para_diameter, 0, 0 ]) ball();
+}
+
+hull() { // +x arrow
+  translate([ + l2, 0, 0 ]) ball();
+  translate([ + l2, 0, -d ]) ball();
+  translate([ + l2 - para_diameter, 0, 0 ]) ball();
+  //translate([ + l2 + para_diameter, 0, 0 ]) ball();
+}
+hull() { // -x arrow
+  translate([ - l2, 0, 0 ]) ball();
+  translate([ - l2, 0, -d ]) ball();
+  //translate([ - l2 - para_diameter, 0, 0 ]) ball();
+  translate([ - l2 + para_diameter, 0, 0 ]) ball();
+}
+
+// fix "under the pen"
+
+hull() {
+  translate([ + l2 - pt, + w2, 0 ]) ball();
+  translate([ + l2 - pt, + w2, -d ]) ball();
+  translate([ - l2 + pt, + w2, 0 ]) ball();
+  translate([ - l2 + pt, + w2, -d ]) ball();
 }
 
 // bottom left sides
